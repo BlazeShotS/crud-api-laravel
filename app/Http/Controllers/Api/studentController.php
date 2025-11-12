@@ -65,6 +65,7 @@ class studentController extends Controller
         return response()->json($data, 201);
     }
 
+    /*Busca un usuario*/
     public function show($id)
     {
         $student = Student::find($id);
@@ -83,6 +84,23 @@ class studentController extends Controller
         return response()->json($data, 200);
     }
 
-
+    /*Para eliminar*/
+    public function destroy ($id)
+    {
+        $student = Student::find($id);
+        if (!$student) {
+            $data = [
+                'message' => 'Estudiante no encontrado',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+        $student->delete();
+        $data=[
+            'message' => 'Estudiante eliminado',
+            'status' => 200
+        ];
+        return response()->json($data, 200);
+    }
 
 }
