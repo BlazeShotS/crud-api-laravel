@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class studentController extends Controller
 {
+    /*get*/
     public function index()
     {
         $students = Student::all();
@@ -22,6 +23,7 @@ class studentController extends Controller
         return response()->json($students, 200);
     }
 
+    /*Crear*/
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -63,6 +65,23 @@ class studentController extends Controller
         return response()->json($data, 201);
     }
 
+    public function show($id)
+    {
+        $student = Student::find($id);
+
+        if (!$student) {
+            $data = [
+                'message' => 'Estudiante no encontrado',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+        $data = [
+            'student' => $student,
+            'status' => 200
+        ];
+        return response()->json($data, 200);
+    }
 
 
 
