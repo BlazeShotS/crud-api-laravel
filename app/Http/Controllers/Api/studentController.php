@@ -103,6 +103,7 @@ class studentController extends Controller
         return response()->json($data, 200);
     }
 
+    /*Actualizar estudiante*/
     public function update (Request $request, $id)
     {
         $student = student::find($id);
