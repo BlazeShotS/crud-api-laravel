@@ -42,7 +42,7 @@ class studentController extends Controller
             return response()->json($data, 400);
         }
 
-        $student = Student::create([
+        $student = Student::create([ /*Este es el create de laravel*/
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
