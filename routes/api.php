@@ -4,14 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\studentController;
 
+/*Tema de las apis*/
+
 Route::get('/students', [studentController::class, 'index']); //Ese index es el nombre de mi metodo
-
 Route::get('/students/{id}',[studentController::class, 'show']);
-
 Route::post('/students', [studentController::class, 'store']);
-
-
 Route::put('/students/{id}',[studentController::class, 'update']);
-
 Route::delete('/students/{id}',[studentController::class, 'destroy']);
 
